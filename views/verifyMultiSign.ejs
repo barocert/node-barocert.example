@@ -16,10 +16,14 @@
                 <%= path %>
             </legend>
             <ul>
-                <li>접수아이디 (receiptID) : <%= result.receiptID %>
+                <li>접수 아이디 (ReceiptID) : <%= result.receiptID %>
                 </li>
-                <li>앱스킴 (scheme): <%= result.scheme %>
-                </li>
+                <% result.multiSignedData.forEach(function(multiSignedData, index){ %>
+                    <li>전자서명 데이터 전문 (multiSignedData) : <%= result.multiSignedData[index] %>
+                    </li>
+                    <% }); %>
+                        <li>연계정보 (Ci) : <%= result.ci %>
+                        </li>
             </ul>
         </fieldset>
     </div>
