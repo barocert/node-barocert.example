@@ -4,10 +4,10 @@ var kakaocert = require('barocert');
 
 kakaocert.config({
   // 링크아이디
-  LinkID: 'LINKHUB_BC',
+  LinkID: 'TESTER',
 
   // 비밀키
-  SecretKey: 'npCAl0sHPpJqlvMbrcBmNagrxkQ74w9Sl0A+M++kMCE=',
+  SecretKey: 'SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=',
 
   // 인증토큰 IP제한기능 사용여부, 권장(true)
   IPRestrictOnOff: true,
