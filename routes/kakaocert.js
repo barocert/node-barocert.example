@@ -39,12 +39,12 @@ router.get('/RequestIdentity', function (req, res, next) {
   // 본인인증 요청정보 객체
   var identity = {
 
-    // 수신자 정보
-    // 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
+    // 수신자 휴대폰번호 - 11자 (하이픈 제외)
     receiverHP: kakaocertService._encrypt('01012341234'),
+    // 수신자 성명 - 80자
     receiverName: kakaocertService._encrypt('홍길동'),
+    // 수신자 생년월일 - 8자 (yyyyMMdd)
     receiverBirthday: kakaocertService._encrypt('19700101'),
-    // ci : kakaocertService._encrypt(''),
 
     // 인증요청 메시지 제목 - 최대 40자
     reqTitle: '인증요청 메시지 제목란',
@@ -121,12 +121,12 @@ router.get('/RequestSign', function (req, res, next) {
   // 전자서명 요청정보 객체
   var sign = {
 
-    // 수신자 정보
-    // 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
+    // 수신자 휴대폰번호 - 11자 (하이픈 제외)
     receiverHP: kakaocertService._encrypt('01012341234'),
+    // 수신자 성명 - 80자
     receiverName: kakaocertService._encrypt('홍길동'),
+    // 수신자 생년월일 - 8자 (yyyyMMdd)
     receiverBirthday: kakaocertService._encrypt('19700101'),
-    // ci : kakaocertService._encrypt(''),
 
     // 인증요청 메시지 제목 - 최대 40자
     reqTitle: '전자서명단건테스트',
@@ -206,12 +206,12 @@ router.get('/RequestMultiSign', function (req, res, next) {
   // 전자서명 요청정보 객체
   var multiSign = {
 
-    // 수신자 정보
-    // 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
+    // 수신자 휴대폰번호 - 11자 (하이픈 제외)
     receiverHP: kakaocertService._encrypt('01012341234'),
+    // 수신자 성명 - 80자
     receiverName: kakaocertService._encrypt('홍길동'),
+    // 수신자 생년월일 - 8자 (yyyyMMdd)
     receiverBirthday: kakaocertService._encrypt('19700101'),
-    // ci : kakaocertService._encrypt(''),
 
     // 인증요청 메시지 제목 - 최대 40자
     reqTitle: '전자서명복수테스트',
@@ -309,12 +309,13 @@ router.get('/RequestCMS', function (req, res, next) {
 
   // 자동이체 출금동의 요청정보 객체
   var CMS = {
-    // 수신자 정보
-    // 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
+
+    // 수신자 휴대폰번호 - 11자 (하이픈 제외)
     receiverHP: kakaocertService._encrypt('01012341234'),
+    // 수신자 성명 - 80자
     receiverName: kakaocertService._encrypt('홍길동'),
+    // 수신자 생년월일 - 8자 (yyyyMMdd)
     receiverBirthday: kakaocertService._encrypt('19700101'),
-    // ci : kakaocertService._encrypt(''),
 
     // 인증요청 메시지 제목 - 최대 40자
     reqTitle: '인증요청 메시지 제공란',
