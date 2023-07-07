@@ -29,8 +29,9 @@ kakaocert.config({
 var kakaocertService = kakaocert.KakaocertService();
 
 /*
-* 카카오톡 사용자에게 본인인증 전자서명을 요청합니다.
-*/
+ * 카카오톡 사용자에게 본인인증 전자서명을 요청합니다.
+ * https://developers.barocert.com/reference/kakao/java/identity/api#RequestIdentity 
+ */
 router.get('/RequestIdentity', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
@@ -70,8 +71,9 @@ router.get('/RequestIdentity', function (req, res, next) {
 });
 
 /*
-* 본인인증 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
-*/
+ * 본인인증 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
+ * https://developers.barocert.com/reference/kakao/java/identity/api#GetIdentityStatus
+ */
 router.get('/GetIdentityStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
@@ -90,9 +92,10 @@ router.get('/GetIdentityStatus', function (req, res, next) {
 });
 
 /*
-* 본인인증 요청시 반환된 접수아이디를 통해 본인인증 서명을 검증합니다. 
-* 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
-*/
+ * 본인인증 요청시 반환된 접수아이디를 통해 본인인증 서명을 검증합니다. 
+ * 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
+ * https://developers.barocert.com/reference/kakao/java/identity/api#VerifyIdentity
+ */
 router.get('/VerifyIdentity', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
@@ -111,8 +114,9 @@ router.get('/VerifyIdentity', function (req, res, next) {
 });
 
 /*
-* 카카오톡 사용자에게 전자서명을 요청합니다.(단건)
-*/
+ * 카카오톡 사용자에게 전자서명을 요청합니다.(단건)
+ * https://developers.barocert.com/reference/kakao/java/sign/api-single#RequestSign
+ */
 router.get('/RequestSign', function (req, res, next) {
 
   // Kakaocert 이용기관코드, Kakaocert 파트너 사이트에서 확인
@@ -155,8 +159,9 @@ router.get('/RequestSign', function (req, res, next) {
 });
 
 /*
-* 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다. (단건)
-*/
+ * 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다. (단건)
+ * https://developers.barocert.com/reference/kakao/java/sign/api-single#GetSignStatus
+ */
 router.get('/GetSignStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
@@ -175,9 +180,10 @@ router.get('/GetSignStatus', function (req, res, next) {
 });
 
 /*
-* 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다. (단건)
-* 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
-*/
+ * 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다. (단건)
+ * 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
+ * https://developers.barocert.com/reference/kakao/java/sign/api-single#VerifySign
+ */
 router.get('/VerifySign', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
@@ -196,8 +202,9 @@ router.get('/VerifySign', function (req, res, next) {
 });
 
 /*
-* 카카오톡 사용자에게 전자서명을 요청합니다.(복수)
-*/
+ * 카카오톡 사용자에게 전자서명을 요청합니다.(복수)
+ * https://developers.barocert.com/reference/kakao/java/sign/api-multi#RequestMultiSign
+ */
 router.get('/RequestMultiSign', function (req, res, next) {
 
   // Kakaocert 이용기관코드, Kakaocert 파트너 사이트에서 확인
@@ -254,8 +261,9 @@ router.get('/RequestMultiSign', function (req, res, next) {
 });
 
 /*
-* 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다. (복수)
-*/
+ * 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다. (복수)
+ * https://developers.barocert.com/reference/kakao/java/sign/api-multi#GetMultiSignStatus
+ */
 router.get('/GetMultiSignStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
@@ -275,9 +283,10 @@ router.get('/GetMultiSignStatus', function (req, res, next) {
 
 
 /*
-* 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다. (복수)
-* 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
-*/
+ * 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다. (복수)
+ * 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
+ * https://developers.barocert.com/reference/kakao/java/sign/api-multi#VerifyMultiSign
+ */
 router.get('/VerifyMultiSign', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
@@ -296,7 +305,8 @@ router.get('/VerifyMultiSign', function (req, res, next) {
 });
 
 /*
-* 카카오톡 사용자에게 자동이체 출금동의 전자서명을 요청합니다.
+ * 카카오톡 사용자에게 자동이체 출금동의 전자서명을 요청합니다.
+ * https://developers.barocert.com/reference/kakao/java/cms/api#RequestCMS
  */
 router.get('/RequestCMS', function (req, res, next) {
 
@@ -353,6 +363,7 @@ router.get('/RequestCMS', function (req, res, next) {
 
 /*
  * 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
+ * https://developers.barocert.com/reference/kakao/java/cms/api#GetCMSStatus
  */
 router.get('/GetCMSStatus', function (req, res, next) {
 
@@ -371,8 +382,9 @@ router.get('/GetCMSStatus', function (req, res, next) {
 });
 
 /*
- *  자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
+ * 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
  * 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
+ * https://developers.barocert.com/reference/kakao/java/cms/api#VerifyCMS
  */
 router.get('/VerifyCMS', function (req, res, next) {
 
