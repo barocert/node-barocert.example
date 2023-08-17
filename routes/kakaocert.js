@@ -9,13 +9,13 @@ kakaocert.config({
   // 비밀키
   SecretKey: 'SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=',
 
-  // 인증토큰 IP제한기능 사용여부, 권장(true)
+  // 인증토큰 IP제한기능 사용여부, true-사용, false-미사용, 기본값(true)
   IPRestrictOnOff: true,
 
   // 카카오써트 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
   UseStaticIP: false,
 
-  // 로컬시스템 시간 사용 여부 true - 사용, false-미사용, 기본값(false)
+  // 로컬시스템 시간 사용여부, true-사용, false-미사용, 기본값(true)
   UseLocalTimeYN: true,
 
   defaultErrorHandler: function (Error) {
@@ -29,13 +29,13 @@ kakaocert.config({
 var kakaocertService = kakaocert.KakaocertService();
 
 /*
- * 카카오톡 사용자에게 본인인증 전자서명을 요청합니다.
- * https://developers.barocert.com/reference/kakao/java/identity/api#RequestIdentity 
+ * 카카오톡 이용자에게 본인인증을 요청합니다.
+ * https://developers.barocert.com/reference/kakao/node/identity/api#RequestIdentity
  */
 router.get('/RequestIdentity', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  var clientCode = '023040000001';
 
   // 본인인증 요청정보 객체
   var identity = {
@@ -63,28 +63,27 @@ router.get('/RequestIdentity', function (req, res, next) {
 
   kakaocertService.requestIdentity(clientCode, identity,
     function (result) {
-      console.log(result)
-      res.render('requestIdentity', { path: req.path, result: result });
+      res.render('kakaocert/requestIdentity', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
 });
 
 /*
- * 본인인증 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
- * https://developers.barocert.com/reference/kakao/java/identity/api#GetIdentityStatus
+ * 본인인증 요청 후 반환받은 접수아이디로 본인인증 진행 상태를 확인합니다.
+ * https://developers.barocert.com/reference/kakao/node/identity/api#GetIdentityStatus
  */
 router.get('/GetIdentityStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  var clientCode = '023040000001';
 
   // 본인인증 요청시 반환받은 접수아이디
-  var receiptId = '02304190230300000040000000000016';
+  var receiptId = '02308170230400000010000000000026';
 
   kakaocertService.getIdentityStatus(clientCode, receiptId,
     function (result) {
-      res.render('getIdentityStatus', { path: req.path, result: result });
+      res.render('kakaocert/getIdentityStatus', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
@@ -92,21 +91,23 @@ router.get('/GetIdentityStatus', function (req, res, next) {
 });
 
 /*
- * 본인인증 요청시 반환된 접수아이디를 통해 본인인증 서명을 검증합니다. 
- * 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
- * https://developers.barocert.com/reference/kakao/java/identity/api#VerifyIdentity
+ * 완료된 전자서명을 검증하고 전자서명값(signedData)을 반환 받습니다.
+ * 반환받은 전자서명값(signedData)과 [1. RequestIdentity] 함수 호출에 입력한 Token의 동일 여부를 확인하여 이용자의 본인인증 검증을 완료합니다.
+ * 카카오 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
+ * 전자서명 완료일시로부터 10분 이후에 검증 API를 호출하면 오류가 반환됩니다.
+ * https://developers.barocert.com/reference/kakao/node/identity/api#VerifyIdentity
  */
 router.get('/VerifyIdentity', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  var clientCode = '023040000001';
 
   // 본인인증 요청시 반환받은 접수아이디
-  var receiptId = '02304190230300000040000000000016';
+  var receiptId = '02308170230400000010000000000026';
 
   kakaocertService.verifyIdentity(clientCode, receiptId,
     function (result) {
-      res.render('verifyIdentity', { path: req.path, result: result });
+      res.render('kakaocert/verifyIdentity', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
@@ -114,13 +115,13 @@ router.get('/VerifyIdentity', function (req, res, next) {
 });
 
 /*
- * 카카오톡 사용자에게 전자서명을 요청합니다.(단건)
- * https://developers.barocert.com/reference/kakao/java/sign/api-single#RequestSign
+ * 카카오톡 이용자에게 단건(1건) 문서의 전자서명을 요청합니다.
+ * https://developers.barocert.com/reference/kakao/node/sign/api-single#RequestSign
  */
 router.get('/RequestSign', function (req, res, next) {
 
-  // Kakaocert 이용기관코드, Kakaocert 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  // 이용기관코드, 파트너 사이트에서 확인
+  var clientCode = '023040000001';
 
   // 전자서명 요청정보 객체
   var sign = {
@@ -151,7 +152,7 @@ router.get('/RequestSign', function (req, res, next) {
 
   kakaocertService.requestSign(clientCode, sign,
     function (result) {
-      res.render('requestSign', { path: req.path, result: result });
+      res.render('kakaocert/requestSign', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
@@ -159,20 +160,20 @@ router.get('/RequestSign', function (req, res, next) {
 });
 
 /*
- * 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다. (단건)
- * https://developers.barocert.com/reference/kakao/java/sign/api-single#GetSignStatus
+ * 전자서명(단건) 요청 후 반환받은 접수아이디로 인증 진행 상태를 확인합니다.
+ * https://developers.barocert.com/reference/kakao/node/sign/api-single#GetSignStatus
  */
 router.get('/GetSignStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  var clientCode = '023040000001';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02304190230300000040000000000021';
+  var receiptId = '02308170230400000010000000000027';
 
   kakaocertService.getSignStatus(clientCode, receiptId,
     function (result) {
-      res.render('getSignStatus', { path: req.path, result: result });
+      res.render('kakaocert/getSignStatus', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
@@ -180,21 +181,22 @@ router.get('/GetSignStatus', function (req, res, next) {
 });
 
 /*
- * 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다. (단건)
- * 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
- * https://developers.barocert.com/reference/kakao/java/sign/api-single#VerifySign
+ * 완료된 전자서명을 검증하고 전자서명값(signedData)을 반환 받습니다.
+ * 카카오 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
+ * 전자서명 완료일시로부터 10분 이후에 검증 API를 호출하면 오류가 반환됩니다.
+ * https://developers.barocert.com/reference/kakao/node/sign/api-single#VerifySign
  */
 router.get('/VerifySign', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  var clientCode = '023040000001';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02304190230300000040000000000021';
+  var receiptId = '02308170230400000010000000000027';
 
   kakaocertService.verifySign(clientCode, receiptId,
     function (result) {
-      res.render('verifySign', { path: req.path, result: result });
+      res.render('kakaocert/verifySign', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
@@ -202,13 +204,13 @@ router.get('/VerifySign', function (req, res, next) {
 });
 
 /*
- * 카카오톡 사용자에게 전자서명을 요청합니다.(복수)
- * https://developers.barocert.com/reference/kakao/java/sign/api-multi#RequestMultiSign
+ * 카카오톡 이용자에게 복수(최대 20건) 문서의 전자서명을 요청합니다.
+ * https://developers.barocert.com/reference/kakao/node/sign/api-multi#RequestMultiSign
  */
 router.get('/RequestMultiSign', function (req, res, next) {
 
-  // Kakaocert 이용기관코드, Kakaocert 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  // 이용기관코드, 파트너 사이트에서 확인
+  var clientCode = '023040000001';
 
   // 전자서명 요청정보 객체
   var multiSign = {
@@ -253,7 +255,7 @@ router.get('/RequestMultiSign', function (req, res, next) {
 
   kakaocertService.requestMultiSign(clientCode, multiSign,
     function (result) {
-      res.render('requestMultiSign', { path: req.path, result: result });
+      res.render('kakaocert/requestMultiSign', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
@@ -261,20 +263,20 @@ router.get('/RequestMultiSign', function (req, res, next) {
 });
 
 /*
- * 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다. (복수)
- * https://developers.barocert.com/reference/kakao/java/sign/api-multi#GetMultiSignStatus
+ * 전자서명(복수) 요청 후 반환받은 접수아이디로 인증 진행 상태를 확인합니다.
+ * https://developers.barocert.com/reference/kakao/node/sign/api-multi#GetMultiSignStatus
  */
 router.get('/GetMultiSignStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  var clientCode = '023040000001';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02304190230300000040000000000026';
+  var receiptId = '02308170230400000010000000000028';
 
   kakaocertService.getMultiSignStatus(clientCode, receiptId,
     function (result) {
-      res.render('getMultiSignStatus', { path: req.path, result: result });
+      res.render('kakaocert/getMultiSignStatus', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
@@ -283,21 +285,22 @@ router.get('/GetMultiSignStatus', function (req, res, next) {
 
 
 /*
- * 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다. (복수)
- * 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
- * https://developers.barocert.com/reference/kakao/java/sign/api-multi#VerifyMultiSign
+ * 완료된 전자서명을 검증하고 전자서명값(signedData)을 반환 받습니다.
+ * 카카오 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
+ * 전자서명 완료일시로부터 10분 이후에 검증 API를 호출하면 오류가 반환됩니다.
+ * https://developers.barocert.com/reference/kakao/node/sign/api-multi#VerifyMultiSign
  */
 router.get('/VerifyMultiSign', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  var clientCode = '023040000001';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02304190230300000040000000000026';
+  var receiptId = '02308170230400000010000000000028';
 
   kakaocertService.verifyMultiSign(clientCode, receiptId,
     function (result) {
-      res.render('verifyMultiSign', { path: req.path, result: result });
+      res.render('kakaocert/verifyMultiSign', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
@@ -305,13 +308,13 @@ router.get('/VerifyMultiSign', function (req, res, next) {
 });
 
 /*
- * 카카오톡 사용자에게 자동이체 출금동의 전자서명을 요청합니다.
- * https://developers.barocert.com/reference/kakao/java/cms/api#RequestCMS
+ * 카카오톡 이용자에게 자동이체 출금동의를 요청합니다.
+ * https://developers.barocert.com/reference/kakao/node/cms/api#RequestCMS
  */
 router.get('/RequestCMS', function (req, res, next) {
 
-  // Kakaocert 이용기관코드, Kakaocert 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  // 이용기관코드, 파트너 사이트에서 확인
+  var clientCode = '023040000001';
 
   // AppToApp 인증 여부
   // true-App To App 방식, false-Talk Message 방식
@@ -355,44 +358,45 @@ router.get('/RequestCMS', function (req, res, next) {
 
   kakaocertService.requestCMS(clientCode, CMS,
     function (result) {
-      res.render('requestCMS', { path: req.path, result: result });
+      res.render('kakaocert/requestCMS', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
 });
 
 /*
- * 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
- * https://developers.barocert.com/reference/kakao/java/cms/api#GetCMSStatus
+ * 자동이체 출금동의 요청 후 반환받은 접수아이디로 인증 진행 상태를 확인합니다.
+ * https://developers.barocert.com/reference/kakao/node/cms/api#GetCMSStatus
  */
 router.get('/GetCMSStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  var clientCode = '023040000001';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptId = '02304190230300000040000000000029';
+  var receiptId = '02308170230400000010000000000029';
 
   kakaocertService.getCMSStatus(clientCode, receiptId,
     function (result) {
-      res.render('getCMSStatus', { path: req.path, result: result });
+      res.render('kakaocert/getCMSStatus', { path: req.path, result: result });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
 });
 
 /*
- * 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
- * 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
- * https://developers.barocert.com/reference/kakao/java/cms/api#VerifyCMS
+ * 완료된 전자서명을 검증하고 전자서명값(signedData)을 반환 받습니다.
+ * 카카오 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
+ * 전자서명 완료일시로부터 10분 이후에 검증 API를 호출하면 오류가 반환됩니다.
+ * https://developers.barocert.com/reference/kakao/node/cms/api#VerifyCMS
  */
 router.get('/VerifyCMS', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023030000004';
+  var clientCode = '023040000001';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptId = '02304190230300000040000000000029';
+  var receiptId = '02308170230400000010000000000029';
 
   // AppToApp 인증 여부
   // true-App To App 방식, false-Talk Message 방식
@@ -400,7 +404,29 @@ router.get('/VerifyCMS', function (req, res, next) {
 
   kakaocertService.verifyCMS(clientCode, receiptId,
     function (response) {
-      res.render('verifyCMS', { path: req.path, result: response });
+      res.render('kakaocert/verifyCMS', { path: req.path, result: response });
+    }, function (error) {
+      res.render('response', { path: req.path, code: error.code, message: error.message });
+    });
+});
+
+/*
+ * 완료된 전자서명을 검증하고 전자서명 데이터 전문(signedData)을 반환 받습니다.
+ * 카카오 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
+ * 전자서명 완료일시로부터 10분 이후에 검증 API를 호출하면 오류가 반환됩니다.
+ * https://developers.barocert.com/reference/kakao/node/login/api#VerifyLogin
+ */
+router.get('/VerifyLogin', function (req, res, next) {
+
+  // 이용기관코드, 파트너 사이트에서 확인
+  var clientCode = '023040000001';
+
+  // 간편로그인 요청시 반환받은 트랜잭션 아이디
+  var txID = '011537db12-a0cd-488c-8a61-522cf9567c11';
+
+  kakaocertService.verifyLogin(clientCode, txID,
+    function (response) {
+      res.render('kakaocert/verifyLogin', { path: req.path, result: response });
     }, function (error) {
       res.render('response', { path: req.path, code: error.code, message: error.message });
     });
