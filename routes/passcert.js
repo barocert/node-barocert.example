@@ -120,14 +120,14 @@ router.get('/VerifyIdentity', function (req, res, next) {
   // 본인인증 요청시 반환받은 접수아이디
   var receiptId = '02308170230400000010000000000012';
 
-  var PassIdentityVerify = {
+  var IdentityVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
     receiverHP: passcertService._encrypt('01012341234'),
     // 수신자 성명 - 80자
     receiverName: passcertService._encrypt('홍길동')
   };
 
-  passcertService.verifyIdentity(clientCode, receiptId, PassIdentityVerify,
+  passcertService.verifyIdentity(clientCode, receiptId, IdentityVerify,
     function (result) {
       res.render('passcert/verifyIdentity', { path: req.path, result: result });
     }, function (error) {
@@ -241,14 +241,14 @@ router.get('/VerifySign', function (req, res, next) {
   // 전자서명 요청시 반환받은 접수아이디
   var receiptId = '02308170230400000010000000000013';
 
-  var PassSignVerify = {
+  var SignVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
     receiverHP: passcertService._encrypt('01012341234'),
     // 수신자 성명 - 80자
     receiverName: passcertService._encrypt('홍길동')
   }
 
-  passcertService.verifySign(clientCode, receiptId, PassSignVerify,
+  passcertService.verifySign(clientCode, receiptId, SignVerify,
     function (result) {
       res.render('passcert/verifySign', { path: req.path, result: result });
     }, function (error) {
@@ -357,14 +357,14 @@ router.get('/VerifyCMS', function (req, res, next) {
   // 자동이체 출금동의 요청시 반환받은 접수아이디
   var receiptId = '02308170230400000010000000000014';
 
-  var PassCMSVerify = {
+  var CMSVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
     receiverHP: passcertService._encrypt('01012341234'),
     // 수신자 성명 - 80자
     receiverName: passcertService._encrypt('홍길동')
   }
   
-  passcertService.verifyCMS(clientCode, receiptId, PassCMSVerify,
+  passcertService.verifyCMS(clientCode, receiptId, CMSVerify,
     function (response) {
       res.render('passcert/verifyCMS', { path: req.path, result: response });
     }, function (error) {
@@ -462,14 +462,14 @@ router.get('/VerifyLogin', function (req, res, next) {
   // 자동이체 출금동의 요청시 반환받은 접수아이디
   var receiptId = '02308170230400000010000000000015';
 
-  var PassLoginVerify = {
+  var LoginVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
     receiverHP: passcertService._encrypt('01012341234'),
     // 수신자 성명 - 80자
     receiverName: passcertService._encrypt('홍길동')
   }
   
-  passcertService.verifyLogin(clientCode, receiptId, PassLoginVerify,
+  passcertService.verifyLogin(clientCode, receiptId, LoginVerify,
     function (response) {
       res.render('passcert/verifyLogin', { path: req.path, result: response });
     }, function (error) {
