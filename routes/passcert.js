@@ -168,7 +168,7 @@ router.get('/RequestSign', function (req, res, next) {
     // 서명 원문 유형
     // 'TEXT' - 일반 텍스트, 'HASH' - HASH 데이터, 'URL' - URL 데이터
     // 원본데이터(originalTypeCode, originalURL, originalFormatCode) 입력시 'TEXT'사용 불가
-    tokenType: passcertService._encrypt('URL'),
+    tokenType: 'URL',
 
     // 사용자 동의 필요 여부
     userAgreementYN: true,

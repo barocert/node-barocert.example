@@ -4,7 +4,7 @@
 <head>
     <title>Response</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <title>Barocert Kakao Service Node Example.</title>
+    <title>Barocert Naver Service Node Example.</title>
 </head>
 
 <body>
@@ -16,9 +16,9 @@
                 <%= path %>
             </legend>
             <ul>
-                <li>접수 아이디 (ReceiptID) : <%= result.receiptID %></li>
-                <li>상태코드 (State) : <%= result.state %></li>
-                <li>전자서명 데이터 전문 (SignedData) : <%= result.signedData %></li>
+                <li>접수아이디 (receiptID) : <%=result.receiptID %></li>
+                <li>앱스킴 (scheme): <%=result.scheme %></li>
+                <li>앱다운로드URL (marketUrl): <%=result.marketUrl %></li>
             </ul>
         </fieldset>
     </div>

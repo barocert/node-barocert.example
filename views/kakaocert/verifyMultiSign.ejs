@@ -17,13 +17,12 @@
             </legend>
             <ul>
                 <li>접수 아이디 (ReceiptID) : <%= result.receiptID %>
+                <li>상태코드 (State) : <%= result.state %></li>
                 </li>
                 <% result.multiSignedData.forEach(function(multiSignedData, index){ %>
-                    <li>전자서명 데이터 전문 (multiSignedData) : <%= result.multiSignedData[index] %>
-                    </li>
-                    <% }); %>
-                        <li>연계정보 (Ci) : <%= result.ci %>
-                        </li>
+                    <li>전자서명 데이터 전문 (multiSignedData) : <%= result.multiSignedData[index] %></li>
+                <% }); %>
+                <li>연계정보 (Ci) : <%= result.ci %></li>
             </ul>
         </fieldset>
     </div>

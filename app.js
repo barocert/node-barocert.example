@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 
 // Kakaocert Router handler 추가
 var kakaocert = require('./routes/kakaocert');
+var navercert = require('./routes/navercert');
 var passcert = require('./routes/passcert');
 
 var app = express();
@@ -30,6 +31,7 @@ app.use('/', routes);
 
 // Kakaocert URL Router 매핑
 app.use('/KakaocertService', kakaocert);
+app.use('/NavercertService', navercert);
 app.use('/PasscertService', passcert);
 
 // catch 404 and forward to error handler
