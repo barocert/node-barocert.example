@@ -48,7 +48,7 @@ router.get('/RequestIdentity', function (req, res, next) {
     reqTitle: '본인인증 요청 메시지 제목',
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
     expireIn: 1000,
-    // 서명 원문 - 최대 2,800자 까지 입력가능
+    // 서명 원문 - 최대 40자 까지 입력가능
     token: kakaocertService._encrypt('본인인증 요청 원문'),
 
     // AppToApp 인증요청 여부
