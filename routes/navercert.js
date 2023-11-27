@@ -134,15 +134,15 @@ router.get('/RequestSign', function (req, res, next) {
     receiverBirthday: navercertService._encrypt('19700101'),
 
     // 인증요청 메시지 제목 - 최대 40자
-    reqTitle: '전자서명단건테스트',
+    reqTitle: '전자서명(단건) 요청 메시지 제목',
     // 인증요청 메시지 - 최대 500자
-    reqMessage: navercertService._encrypt('전자서명 메시지 내용'),
+    reqMessage: navercertService._encrypt('전자서명(단건) 요청 메시지'),
     // 고객센터 연락처 - 최대 12자
     callCenterNum: '1600-9854',
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
     expireIn: 1000,
     // 서명 원문 - 원문 2,800자 까지 입력가능
-    token: navercertService._encrypt('전자서명단건테스트데이터'),
+    token: navercertService._encrypt('전자서명(단건) 요청 원문'),
     // 서명 원문 유형
     // TEXT - 일반 텍스트, HASH - HASH 데이터
     tokenType: 'TEXT',
@@ -230,9 +230,9 @@ router.get('/RequestMultiSign', function (req, res, next) {
     receiverBirthday: navercertService._encrypt('19700101'),
     
     // 인증요청 메시지 제목 - 최대 40자
-    reqTitle: '전자서명복수테스트',
+    reqTitle: '전자서명(복수) 요청 메시지 제목',
     // 인증요청 메시지 - 최대 500자
-    reqMessage: navercertService._encrypt('전자서명 메시지 내용'),
+    reqMessage: navercertService._encrypt('전자서명(복수) 요청 메시지'),
     // 고객센터 연락처 - 최대 12자
     callCenterNum: '1600-9854',
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
@@ -245,7 +245,7 @@ router.get('/RequestMultiSign', function (req, res, next) {
       // 'TEXT' - 일반 텍스트, 'HASH' - HASH 데이터
       tokenType: 'TEXT',
       // 서명 원문 - 원문 2,800자 까지 입력가능
-      token: navercertService._encrypt('전자서명복수테스트데이터1')
+      token: navercertService._encrypt('전자서명(복수) 요청 원문 1')
     }, {
       // 서명 원문 유형
       // 'TEXT' - 일반 텍스트, 'HASH' - HASH 데이터

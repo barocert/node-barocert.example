@@ -45,15 +45,15 @@ router.get('/RequestIdentity', function (req, res, next) {
     receiverBirthday: passcertService._encrypt('19700101'),
 
     // 인증요청 메시지 제목 - 최대 40자
-    reqTitle: '본인인증 메시지 제목',
+    reqTitle: '본인인증 요청 메시지 제목',
     // 인증요청 메시지 - 최대 500자
-    reqMessage: passcertService._encrypt('본인인증 메시지 내용'),
+    reqMessage: passcertService._encrypt('본인인증 요청 메시지'),
     // 고객센터 연락처 - 최대 12자
     callCenterNum: '1600-9854',
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
     expireIn: 1000,
     // 서명 원문 - 최대 2,800자 까지 입력가능
-    token: passcertService._encrypt('본인인증요청토큰'),
+    token: passcertService._encrypt('본인인증 요청 원문'),
 
     // 사용자 동의 필요 여부
     userAgreementYN: true,
@@ -153,15 +153,15 @@ router.get('/RequestSign', function (req, res, next) {
     receiverBirthday: passcertService._encrypt('19700101'),
 
     // 인증요청 메시지 제목 - 최대 40자
-    reqTitle: '전자서명 메시지 제목',
+    reqTitle: '전자서명 요청 메시지 제목',
     // 인증요청 메시지 - 최대 500자
-    reqMessage: passcertService._encrypt('전자서명 메시지 내용'),
+    reqMessage: passcertService._encrypt('전자서명 요청 메시지'),
     // 고객센터 연락처 - 최대 12자
     callCenterNum: '1600-9854',
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
     expireIn: 1000,
     // 서명 원문 - 원문 2,800자 까지 입력가능
-    token: passcertService._encrypt('패스써트 전자서명테스트데이터'),
+    token: passcertService._encrypt('전자서명 요청 원문'),
     // 서명 원문 유형
     // 'TEXT' - 일반 텍스트, 'HASH' - HASH 데이터, 'URL' - URL 데이터
     // 원본데이터(originalTypeCode, originalURL, originalFormatCode) 입력시 'TEXT'사용 불가
@@ -274,9 +274,9 @@ router.get('/RequestCMS', function (req, res, next) {
     receiverBirthday: passcertService._encrypt('19700101'),
 
     // 인증요청 메시지 제목 - 최대 40자
-    reqTitle: '출금동의 메시지 제목',
+    reqTitle: '출금동의 요청 메시지 제목',
     // 인증요청 메시지 - 최대 500자
-    reqMessage: passcertService._encrypt('출금동의 메시지 내용'),
+    reqMessage: passcertService._encrypt('출금동의 요청 메시지'),
     // 고객센터 연락처 - 최대 12자
     callCenterNum: '1600-9854',
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
@@ -389,15 +389,15 @@ router.get('/RequestLogin', function (req, res, next) {
     receiverBirthday: passcertService._encrypt('19700101'),
 
     // 인증요청 메시지 제목 - 최대 40자
-    reqTitle: '간편로그인 메시지 제목',
+    reqTitle: '간편로그인 요청 메시지 제목',
     // 인증요청 메시지 - 최대 500자
-    reqMessage: passcertService._encrypt('간편로그인 메시지 내용'),
+    reqMessage: passcertService._encrypt('간편로그인 요청 메시지'),
     // 고객센터 연락처 - 최대 12자
     callCenterNum: '1600-9854',
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
     expireIn: 1000,
     // 서명 원문 - 최대 2,800자 까지 입력가능
-    token: passcertService._encrypt('간편로그인요청토큰'),
+    token: passcertService._encrypt('간편로그인 요청 원문'),
 
     // 사용자 동의 필요 여부
     userAgreementYN: true,
