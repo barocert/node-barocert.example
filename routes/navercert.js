@@ -251,7 +251,7 @@ router.get('/RequestMultiSign', function (req, res, next) {
       // 'TEXT' - 일반 텍스트, 'HASH' - HASH 데이터
       tokenType: 'HASH',
       // 서명 원문 - 원문 2,800자 까지 입력가능
-      token: navercertService._encrypt('n4bQgYhMfWWaL-qgxVrQFaO_TxsrC4Is0V1sFbDwCgg')
+      token: navercertService._encrypt('전자서명(복수) 요청 원문 2')
     }],
 
     // AppToApp 인증요청 여부
