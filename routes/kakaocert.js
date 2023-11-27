@@ -76,9 +76,9 @@ router.get('/GetIdentityStatus', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 본인인증 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000026';
+  var receiptID = '02308170230400000010000000000026';
 
-  kakaocertService.getIdentityStatus(clientCode, receiptId,
+  kakaocertService.getIdentityStatus(clientCode, receiptID,
     function (result) {
       res.render('kakaocert/getIdentityStatus', { path: req.path, result: result });
     }, function (error) {
@@ -100,9 +100,9 @@ router.get('/VerifyIdentity', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 본인인증 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000026';
+  var receiptID = '02308170230400000010000000000026';
 
-  kakaocertService.verifyIdentity(clientCode, receiptId,
+  kakaocertService.verifyIdentity(clientCode, receiptID,
     function (result) {
       res.render('kakaocert/verifyIdentity', { path: req.path, result: result });
     }, function (error) {
@@ -166,9 +166,9 @@ router.get('/GetSignStatus', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000027';
+  var receiptID = '02308170230400000010000000000027';
 
-  kakaocertService.getSignStatus(clientCode, receiptId,
+  kakaocertService.getSignStatus(clientCode, receiptID,
     function (result) {
       res.render('kakaocert/getSignStatus', { path: req.path, result: result });
     }, function (error) {
@@ -189,9 +189,9 @@ router.get('/VerifySign', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000027';
+  var receiptID = '02308170230400000010000000000027';
 
-  kakaocertService.verifySign(clientCode, receiptId,
+  kakaocertService.verifySign(clientCode, receiptID,
     function (result) {
       res.render('kakaocert/verifySign', { path: req.path, result: result });
     }, function (error) {
@@ -269,9 +269,9 @@ router.get('/GetMultiSignStatus', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000028';
+  var receiptID = '02308170230400000010000000000028';
 
-  kakaocertService.getMultiSignStatus(clientCode, receiptId,
+  kakaocertService.getMultiSignStatus(clientCode, receiptID,
     function (result) {
       res.render('kakaocert/getMultiSignStatus', { path: req.path, result: result });
     }, function (error) {
@@ -293,9 +293,9 @@ router.get('/VerifyMultiSign', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000028';
+  var receiptID = '02308170230400000010000000000028';
 
-  kakaocertService.verifyMultiSign(clientCode, receiptId,
+  kakaocertService.verifyMultiSign(clientCode, receiptID,
     function (result) {
       res.render('kakaocert/verifyMultiSign', { path: req.path, result: result });
     }, function (error) {
@@ -371,9 +371,9 @@ router.get('/GetCMSStatus', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000029';
+  var receiptID = '02308170230400000010000000000029';
 
-  kakaocertService.getCMSStatus(clientCode, receiptId,
+  kakaocertService.getCMSStatus(clientCode, receiptID,
     function (result) {
       res.render('kakaocert/getCMSStatus', { path: req.path, result: result });
     }, function (error) {
@@ -393,13 +393,13 @@ router.get('/VerifyCMS', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000029';
+  var receiptID = '02308170230400000010000000000029';
 
   // AppToApp 인증 여부
   // true-App To App 방식, false-Talk Message 방식
   var appUseYN = false;
 
-  kakaocertService.verifyCMS(clientCode, receiptId,
+  kakaocertService.verifyCMS(clientCode, receiptID,
     function (response) {
       res.render('kakaocert/verifyCMS', { path: req.path, result: response });
     }, function (error) {

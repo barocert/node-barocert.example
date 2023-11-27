@@ -80,9 +80,9 @@ router.get('/GetIdentityStatus', function (req, res, next) {
   var clientCode = '023060000088';
 
   // 본인인증 요청시 반환받은 접수아이디
-  var receiptId = '02309070230600000880000000000010';
+  var receiptID = '02309070230600000880000000000010';
 
-  navercertService.getIdentityStatus(clientCode, receiptId,
+  navercertService.getIdentityStatus(clientCode, receiptID,
     function (result) {
       res.render('navercert/getIdentityStatus', { path: req.path, result: result });
     }, function (error) {
@@ -103,9 +103,9 @@ router.get('/VerifyIdentity', function (req, res, next) {
   var clientCode = '023060000088';
 
   // 본인인증 요청시 반환받은 접수아이디
-  var receiptId = '02309070230600000880000000000010';
+  var receiptID = '02309070230600000880000000000010';
 
-  navercertService.verifyIdentity(clientCode, receiptId,
+  navercertService.verifyIdentity(clientCode, receiptID,
     function (result) {
       res.render('navercert/verifyIdentity', { path: req.path, result: result });
     }, function (error) {
@@ -177,9 +177,9 @@ router.get('/GetSignStatus', function (req, res, next) {
   var clientCode = '023060000088';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02309070230600000880000000000012';
+  var receiptID = '02309070230600000880000000000012';
 
-  navercertService.getSignStatus(clientCode, receiptId,
+  navercertService.getSignStatus(clientCode, receiptID,
     function (result) {
       res.render('navercert/getSignStatus', { path: req.path, result: result });
     }, function (error) {
@@ -199,9 +199,9 @@ router.get('/VerifySign', function (req, res, next) {
   var clientCode = '023060000088';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02309070230600000880000000000012';
+  var receiptID = '02309070230600000880000000000012';
 
-  navercertService.verifySign(clientCode, receiptId,
+  navercertService.verifySign(clientCode, receiptID,
     function (result) {
       res.render('navercert/verifySign', { path: req.path, result: result });
     }, function (error) {
@@ -285,9 +285,9 @@ router.get('/GetMultiSignStatus', function (req, res, next) {
   var clientCode = '023060000088';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02309070230600000880000000000015';
+  var receiptID = '02309070230600000880000000000015';
 
-  navercertService.getMultiSignStatus(clientCode, receiptId,
+  navercertService.getMultiSignStatus(clientCode, receiptID,
     function (result) {
       res.render('navercert/getMultiSignStatus', { path: req.path, result: result });
     }, function (error) {
@@ -308,9 +308,9 @@ router.get('/VerifyMultiSign', function (req, res, next) {
   var clientCode = '023060000088';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02309070230600000880000000000015';
+  var receiptID = '02309070230600000880000000000015';
 
-  navercertService.verifyMultiSign(clientCode, receiptId,
+  navercertService.verifyMultiSign(clientCode, receiptID,
     function (result) {
       res.render('navercert/verifyMultiSign', { path: req.path, result: result });
     }, function (error) {

@@ -91,9 +91,9 @@ router.get('/GetIdentityStatus', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 본인인증 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000012';
+  var receiptID = '02308170230400000010000000000012';
 
-  passcertService.getIdentityStatus(clientCode, receiptId,
+  passcertService.getIdentityStatus(clientCode, receiptID,
     function (result) {
       res.render('passcert/getIdentityStatus', { path: req.path, result: result });
     }, function (error) {
@@ -115,7 +115,7 @@ router.get('/VerifyIdentity', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 본인인증 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000012';
+  var receiptID = '02308170230400000010000000000012';
 
   var IdentityVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -124,7 +124,7 @@ router.get('/VerifyIdentity', function (req, res, next) {
     receiverName: passcertService._encrypt('홍길동')
   };
 
-  passcertService.verifyIdentity(clientCode, receiptId, IdentityVerify,
+  passcertService.verifyIdentity(clientCode, receiptID, IdentityVerify,
     function (result) {
       res.render('passcert/verifyIdentity', { path: req.path, result: result });
     }, function (error) {
@@ -213,9 +213,9 @@ router.get('/GetSignStatus', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000013';
+  var receiptID = '02308170230400000010000000000013';
 
-  passcertService.getSignStatus(clientCode, receiptId,
+  passcertService.getSignStatus(clientCode, receiptID,
     function (result) {
       res.render('passcert/getSignStatus', { path: req.path, result: result });
     }, function (error) {
@@ -236,7 +236,7 @@ router.get('/VerifySign', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000013';
+  var receiptID = '02308170230400000010000000000013';
 
   var SignVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -245,7 +245,7 @@ router.get('/VerifySign', function (req, res, next) {
     receiverName: passcertService._encrypt('홍길동')
   }
 
-  passcertService.verifySign(clientCode, receiptId, SignVerify,
+  passcertService.verifySign(clientCode, receiptID, SignVerify,
     function (result) {
       res.render('passcert/verifySign', { path: req.path, result: result });
     }, function (error) {
@@ -330,9 +330,9 @@ router.get('/GetCMSStatus', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000014';
+  var receiptID = '02308170230400000010000000000014';
 
-  passcertService.getCMSStatus(clientCode, receiptId,
+  passcertService.getCMSStatus(clientCode, receiptID,
     function (result) {
       res.render('passcert/getCMSStatus', { path: req.path, result: result });
     }, function (error) {
@@ -352,7 +352,7 @@ router.get('/VerifyCMS', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000014';
+  var receiptID = '02308170230400000010000000000014';
 
   var CMSVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -361,7 +361,7 @@ router.get('/VerifyCMS', function (req, res, next) {
     receiverName: passcertService._encrypt('홍길동')
   }
   
-  passcertService.verifyCMS(clientCode, receiptId, CMSVerify,
+  passcertService.verifyCMS(clientCode, receiptID, CMSVerify,
     function (response) {
       res.render('passcert/verifyCMS', { path: req.path, result: response });
     }, function (error) {
@@ -435,9 +435,9 @@ router.get('/GetLoginStatus', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000015';
+  var receiptID = '02308170230400000010000000000015';
 
-  passcertService.getLoginStatus(clientCode, receiptId,
+  passcertService.getLoginStatus(clientCode, receiptID,
     function (result) {
       res.render('passcert/getLoginStatus', { path: req.path, result: result });
     }, function (error) {
@@ -457,7 +457,7 @@ router.get('/VerifyLogin', function (req, res, next) {
   var clientCode = '023040000001';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptId = '02308170230400000010000000000015';
+  var receiptID = '02308170230400000010000000000015';
 
   var LoginVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -466,7 +466,7 @@ router.get('/VerifyLogin', function (req, res, next) {
     receiverName: passcertService._encrypt('홍길동')
   }
   
-  passcertService.verifyLogin(clientCode, receiptId, LoginVerify,
+  passcertService.verifyLogin(clientCode, receiptID, LoginVerify,
     function (response) {
       res.render('passcert/verifyLogin', { path: req.path, result: response });
     }, function (error) {
