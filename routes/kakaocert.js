@@ -46,8 +46,8 @@ router.get('/RequestIdentity', function (req, res, next) {
 
     // 인증요청 메시지 제목 - 최대 40자
     reqTitle: '본인인증 요청 메시지 제목',
-    // 상세 설명 - 최대 500자
-    extraMessage: kakaocertService._encrypt('본인인증 상세 설명'),
+    // 커스텀 메시지 - 최대 500자
+    extraMessage: kakaocertService._encrypt('본인인증 커스텀 메시지'),
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
     expireIn: 1000,
     // 서명 원문 - 최대 40자 까지 입력가능
@@ -134,8 +134,8 @@ router.get('/RequestSign', function (req, res, next) {
 
     // 서명 요청 제목 - 최대 40자
     signTitle: '전자서명(단건) 서명 요청 제목',
-    // 상세 설명 - 최대 500자
-    extraMessage: kakaocertService._encrypt('전자서명(단건) 상세 설명'),
+    // 커스텀 메시지 - 최대 500자
+    extraMessage: kakaocertService._encrypt('전자서명(단건) 커스텀 메시지'),
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
     expireIn: 1000,
     // 서명 원문 - 원문 2,800자 까지 입력가능
@@ -225,8 +225,8 @@ router.get('/RequestMultiSign', function (req, res, next) {
 
     // 인증요청 메시지 제목 - 최대 40자
     reqTitle: '전자서명(복수) 요청 메시지 제목',
-    // 상세 설명 - 최대 500자
-    extraMessage: kakaocertService._encrypt('전자서명(복수) 상세 설명'),
+    // 커스텀 메시지 - 최대 500자
+    extraMessage: kakaocertService._encrypt('전자서명(복수) 커스텀 메시지'),
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
     expireIn: 1000,
 
@@ -335,6 +335,8 @@ router.get('/RequestCMS', function (req, res, next) {
 
     // 인증요청 메시지 제목 - 최대 40자
     reqTitle: '출금동의 요청 메시지 제목',
+    // 커스텀 메시지 - 최대 500자
+    extraMessage: kakaocertService._encrypt('출금동의 커스텀 메시지'),
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
     expireIn: 1000,
     // 청구기관명 - 최대 100자
