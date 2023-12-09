@@ -32,7 +32,7 @@ var passcertService = passcert.PasscertService();
 router.get('/RequestIdentity', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 본인인증 요청정보 객체
   var identity = {
@@ -88,10 +88,10 @@ router.get('/RequestIdentity', function (req, res, next) {
 router.get('/GetIdentityStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 본인인증 요청시 반환받은 접수아이디
-  var receiptID = '02308170230400000010000000000012';
+  var receiptID = '02308170230700000140000000000012';
 
   passcertService.getIdentityStatus(clientCode, receiptID,
     function (result) {
@@ -112,10 +112,10 @@ router.get('/GetIdentityStatus', function (req, res, next) {
 router.get('/VerifyIdentity', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 본인인증 요청시 반환받은 접수아이디
-  var receiptID = '02308170230400000010000000000012';
+  var receiptID = '02308170230700000140000000000012';
 
   var IdentityVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -140,7 +140,7 @@ router.get('/VerifyIdentity', function (req, res, next) {
 router.get('/RequestSign', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 전자서명 요청정보 객체
   var sign = {
@@ -210,10 +210,10 @@ router.get('/RequestSign', function (req, res, next) {
 router.get('/GetSignStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptID = '02308170230400000010000000000013';
+  var receiptID = '02308170230700000140000000000013';
 
   passcertService.getSignStatus(clientCode, receiptID,
     function (result) {
@@ -233,10 +233,10 @@ router.get('/GetSignStatus', function (req, res, next) {
 router.get('/VerifySign', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 전자서명 요청시 반환받은 접수아이디
-  var receiptID = '02308170230400000010000000000013';
+  var receiptID = '02308170230700000140000000000013';
 
   var SignVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -261,7 +261,7 @@ router.get('/VerifySign', function (req, res, next) {
 router.get('/RequestCMS', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 자동이체 출금동의 요청정보 객체
   var CMS = {
@@ -327,10 +327,10 @@ router.get('/RequestCMS', function (req, res, next) {
 router.get('/GetCMSStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptID = '02308170230400000010000000000014';
+  var receiptID = '02308170230700000140000000000014';
 
   passcertService.getCMSStatus(clientCode, receiptID,
     function (result) {
@@ -349,10 +349,10 @@ router.get('/GetCMSStatus', function (req, res, next) {
 router.get('/VerifyCMS', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptID = '02308170230400000010000000000014';
+  var receiptID = '02308170230700000140000000000014';
 
   var CMSVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -376,7 +376,7 @@ router.get('/VerifyCMS', function (req, res, next) {
 router.get('/RequestLogin', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 자동이체 출금동의 요청정보 객체
   var Login = {
@@ -432,10 +432,10 @@ router.get('/RequestLogin', function (req, res, next) {
 router.get('/GetLoginStatus', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptID = '02308170230400000010000000000015';
+  var receiptID = '02308170230700000140000000000015';
 
   passcertService.getLoginStatus(clientCode, receiptID,
     function (result) {
@@ -454,10 +454,10 @@ router.get('/GetLoginStatus', function (req, res, next) {
 router.get('/VerifyLogin', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
-  var clientCode = '023040000001';
+  var clientCode = '023070000014';
 
   // 자동이체 출금동의 요청시 반환받은 접수아이디
-  var receiptID = '02308170230400000010000000000015';
+  var receiptID = '02308170230700000140000000000015';
 
   var LoginVerify = {
     // 수신자 휴대폰번호 - 11자 (하이픈 제외)
