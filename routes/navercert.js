@@ -148,7 +148,7 @@ router.get('/RequestSign', function (req, res, next) {
     // 서명 원문 유형
     // tokenType: 'HASH',
     // 서명 원문 유형이 HASH인 경우, 원문은 SHA-256, Base64 URL Safe No Padding을 사용
-    // token: navercertService._encrypt(navercertService._sha256('전자서명(단건) 요청 원문')),
+    // token: navercertService._encrypt(navercertService._sha256_base64url('전자서명(단건) 요청 원문')),
 
     // AppToApp 인증요청 여부
     // true - AppToApp 인증방식, false - Talk Message 인증방식
@@ -252,7 +252,7 @@ router.get('/RequestMultiSign', function (req, res, next) {
       // 서명 원문 유형
       // tokenType: 'HASH',
       // 서명 원문 유형이 HASH인 경우, 원문은 SHA-256, Base64 URL Safe No Padding을 사용
-      // token: navercertService._encrypt(navercertService._sha256('전자서명(단건) 요청 원문 1')),
+      // token: navercertService._encrypt(navercertService._sha256_base64url('전자서명(단건) 요청 원문 1')),
     }, {
       // 서명 원문 유형
       // 'TEXT' - 일반 텍스트, 'HASH' - HASH 데이터
@@ -262,7 +262,7 @@ router.get('/RequestMultiSign', function (req, res, next) {
       // 서명 원문 유형
       // tokenType: 'HASH',
       // 서명 원문 유형이 HASH인 경우, 원문은 SHA-256, Base64 URL Safe No Padding을 사용
-      // token: navercertService._encrypt(navercertService._sha256('전자서명(단건) 요청 원문 2')),
+      // token: navercertService._encrypt(navercertService._sha256_base64url('전자서명(단건) 요청 원문 2')),
     }],
 
     // AppToApp 인증요청 여부
