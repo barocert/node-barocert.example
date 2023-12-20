@@ -51,7 +51,7 @@ router.get('/RequestIdentity', function (req, res, next) {
     expireIn: 1000,
 
     // AppToApp 인증요청 여부
-    // true - AppToApp 인증방식, false - Talk Message 인증방식
+    // true - AppToApp 인증방식, false - 푸시(Push) 인증방식
     appUseYN: false,
     // AppToApp 인증방식에서 사용
     // 모바일장비 유형('ANDROID', 'IOS'), 대문자 입력(대소문자 구분)
@@ -151,7 +151,7 @@ router.get('/RequestSign', function (req, res, next) {
     // token: navercertService._encrypt(navercertService._sha256_base64url('전자서명(단건) 요청 원문')),
 
     // AppToApp 인증요청 여부
-    // true - AppToApp 인증방식, false - Talk Message 인증방식
+    // true - AppToApp 인증방식, false - 푸시(Push) 인증방식
     appUseYN: false,
     // AppToApp 인증방식에서 사용
     // 모바일장비 유형('ANDROID', 'IOS'), 대문자 입력(대소문자 구분)
@@ -266,7 +266,7 @@ router.get('/RequestMultiSign', function (req, res, next) {
     }],
 
     // AppToApp 인증요청 여부
-    // true - AppToApp 인증방식, false - Talk Message 인증방식
+    // true - AppToApp 인증방식, false - 푸시(Push) 인증방식
     appUseYN: false,
     // AppToApp 인증방식에서 사용
     // 모바일장비 유형('ANDROID', 'IOS'), 대문자 입력(대소문자 구분)
@@ -369,7 +369,7 @@ router.get('/RequestCMS', function (req, res, next) {
     bankAccountBirthday: navercertService._encrypt("19700101"),
 
     // AppToApp 인증요청 여부
-    // true - AppToApp 인증방식, false - Talk Message 인증방식
+    // true - AppToApp 인증방식, false - 푸시(Push) 인증방식
     appUseYN: false,
     // AppToApp 인증방식에서 사용
     // 모바일장비 유형('ANDROID', 'IOS'), 대문자 입력(대소문자 구분)

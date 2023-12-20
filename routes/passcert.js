@@ -61,7 +61,7 @@ router.get('/RequestIdentity', function (req, res, next) {
     receiverInfoYN: true,
 
     // AppToApp 인증요청 여부
-    // true - AppToApp 인증방식, false - Push 인증방식
+    // true - AppToApp 인증방식, false - 푸시(Push) 인증방식
     appUseYN: false,
     // ApptoApp 인증방식에서 사용
     // 통신사 유형('SKT', 'KT', 'LGU'), 대문자 입력(대소문자 구분)
@@ -182,7 +182,7 @@ router.get('/RequestSign', function (req, res, next) {
     originalFormatCode: 'HTML',
 
     // AppToApp 인증요청 여부
-    // true - AppToApp 인증방식, false - Push 인증방식
+    // true - AppToApp 인증방식, false - 푸시(Push) 인증방식
     appUseYN: false,
     // ApptoApp 인증방식에서 사용
     // 통신사 유형('SKT', 'KT', 'LGU'), 대문자 입력(대소문자 구분)
@@ -300,7 +300,7 @@ router.get('/RequestCMS', function (req, res, next) {
     bankWithdraw: passcertService._encrypt('1,000,000원'),
 
     // AppToApp 인증요청 여부
-    // true - AppToApp 인증방식, false - Push 인증방식
+    // true - AppToApp 인증방식, false - 푸시(Push) 인증방식
     appUseYN: false,
     // ApptoApp 인증방식에서 사용
     // 통신사 유형('SKT', 'KT', 'LGU'), 대문자 입력(대소문자 구분)
@@ -405,7 +405,7 @@ router.get('/RequestLogin', function (req, res, next) {
     receiverInfoYN: true,
 
     // AppToApp 인증요청 여부
-    // true - AppToApp 인증방식, false - Push 인증방식
+    // true - AppToApp 인증방식, false - 푸시(Push) 인증방식
     appUseYN: false,
     // ApptoApp 인증방식에서 사용
     // 통신사 유형('SKT', 'KT', 'LGU'), 대문자 입력(대소문자 구분)
