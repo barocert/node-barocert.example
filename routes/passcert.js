@@ -26,7 +26,7 @@ passcert.config({
 var passcertService = passcert.PasscertService();
 
 /*
- * 패스 이용자에게 간편로그인을 요청합니다.
+ * 패스 이용자에게 본인인증을 요청합니다.
  * https://developers.barocert.com/reference/pass/node/identity/api#RequestIdentity
  */
 router.get('/RequestIdentity', function (req, res, next) {
