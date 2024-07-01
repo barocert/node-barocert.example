@@ -1,7 +1,7 @@
 /*
 * Barocert KAKAO API Node SDK Example
 *
-* 업데이트 일자 : 2024-04-17
+* 업데이트 일자 : 2024-06-30
 * 연동기술지원 연락처 : 1600-9854
 * 연동기술지원 이메일 : code@linkhubcorp.com
 *         
@@ -19,6 +19,7 @@
 var express = require('express');
 var router = express.Router();
 var kakaocert = require('barocert');
+var fs = require('fs');
 
 kakaocert.config({
   // 링크아이디
@@ -139,6 +140,8 @@ router.get('/RequestSign', function (req, res, next) {
 
   // 이용기관코드, 파트너 사이트에서 확인
   var clientCode = '023040000001';
+    
+  // var target = fs.readFileSync("./barocert.pdf")
 
   // 전자서명 요청정보 객체
   var sign = {
@@ -156,11 +159,14 @@ router.get('/RequestSign', function (req, res, next) {
     extraMessage: kakaocertService._encrypt('전자서명(단건) 커스텀 메시지'),
     // 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
     expireIn: 1000,
+    // 서명 원문 유형
+    // TEXT - 일반 텍스트, HASH - HASH 데이터, PDF - PDF
+    tokenType: 'TEXT',
+    // tokenType: 'PDF',
     // 서명 원문 - 원문 2,800자 까지 입력가능
     token: kakaocertService._encrypt('전자서명(단건) 요청 원문'),
-    // 서명 원문 유형
-    // TEXT - 일반 텍스트, HASH - HASH 데이터
-    tokenType: 'TEXT',
+    // 서명 원문 유형이 PDF인 경우, 원문은 SHA-256, Base64 URL Safe No Padding을 사용
+    // token: kakaocertService._encrypt(kakaocertService._sha256_base64url_file(target)),
 
     // AppToApp 인증요청 여부
     // true - AppToApp 인증방식, false - Talk Message 인증방식
