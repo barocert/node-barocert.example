@@ -1,2 +1,2 @@
 # node-barocert.example
-barocert node.js SDK Example v1.3.1
+barocert node.js SDK Example v1.4.0
